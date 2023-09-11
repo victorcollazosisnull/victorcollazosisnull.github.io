@@ -1,0 +1,27 @@
+/* Add this CSS to your stylesheets or use a CSS-in-JS solution like styled-components */
+
+.centered-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #333; /* Change to your preferred background color */
+  color: #fff; /* Change to your preferred text color */
+}
+
+.centered-content {
+  text-align: center;
+}
+
+.centered-title {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.centered-unity {
+  width: 800px;
+  height: 600px;
+  border: 2px solid #fff; /* Add a border to the Unity component */
+  border-radius: 10px; /* Add border radius for a cooler look */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Add a subtle shadow */
+}
