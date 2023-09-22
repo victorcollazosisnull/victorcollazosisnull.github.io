@@ -1,21 +1,25 @@
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import './App.css'
-import { Unity, useUnityContext } from "react-unity-webgl";
+import Home from "./pages/Home.tsx";
+import MainHeader from "./common/MainHeader.tsx";
+import MainNav from "./common/MainNav.tsx";
+import MainFooter from "./common/MainFooter.tsx";
+import Game from "./pages/Game.tsx";
 
 function App() {
-    const { unityProvider } = useUnityContext({
-        loaderUrl: "/UnityReact.loader.js",
-        dataUrl: "/UnityReact.data.unityweb",
-        frameworkUrl: "/UnityReact.framework.js.unityweb",
-        codeUrl: "/UnityReact.wasm.unityweb",
-    });
-
     return (
-        <div className="centered-container">
-            <div className="centered-content">
-                <h1 className="centered-title">React + Unity / Tecsup</h1>
-                    <Unity unityProvider={unityProvider} className="centered-unity" />
-            </div>
-        </div>
+        <>
+            <BrowserRouter>
+                <MainHeader />
+                <MainNav />
+                <Routes>
+                    <Route path='/' element={<Home/>}/>
+                    <Route path='/game' element={<Game/>}/>
+                </Routes>
+                <MainFooter />
+            </BrowserRouter>
+
+        </>
     );
 }
 
