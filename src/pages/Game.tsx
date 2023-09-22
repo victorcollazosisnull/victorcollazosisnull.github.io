@@ -7,7 +7,6 @@ function Game() {
         frameworkUrl: "/UnityReact.framework.js.unityweb",
         codeUrl: "/UnityReact.wasm.unityweb",
     });
-
     return (
         <>
             <div className="centered-container">

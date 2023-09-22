@@ -13,22 +13,22 @@ function MainBanner() {
                 <div className="carousel-item active">
                     <img src={banner1} className="d-block w-100" alt="..."/>
                     <div className="carousel-caption d-none d-md-block">
-                        <h5>First slide label</h5>
-                        <p>Some representative placeholder content for the first slide.</p>
+                        <h5>EVE VR Online</h5>
+                        <p>Amazing VR space game</p>
                     </div>
                 </div>
                 <div className="carousel-item">
                     <img src={banner2} className="d-block w-100" alt="..."/>
                     <div className="carousel-caption d-none d-md-block">
-                        <h5>Second slide label</h5>
-                        <p>Some representative placeholder content for the second slide.</p>
+                        <h5>Virtual Reality Headset </h5>
+                        <p>New VR set, no cables</p>
                     </div>
                 </div>
                 <div className="carousel-item">
                     <img src={banner3} className="d-block w-100" alt="..."/>
                     <div className="carousel-caption d-none d-md-block">
-                        <h5>Third slide label</h5>
-                        <p>Some representative placeholder content for the third slide.</p>
+                        <h5>Computer Cloud Gaming</h5>
+                        <p>Cloud Solutions</p>
                     </div>
                 </div>
             </div>
