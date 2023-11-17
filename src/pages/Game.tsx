@@ -19,7 +19,11 @@ function Game() {
                 <div className="centered-content">
                     <h1 className="centered-title">React + Unity / Tecsup</h1>
                     <Unity unityProvider={unityProvider} className="centered-unity" />
-                    <button onClick={handleClickSpawnEnemies}>Spawn Enemies</button>
+
+                    <div className="centered-content">
+                        <button onClick={handleClickSpawnEnemies}>Spawn Enemies</button>
+                    </div>
+
                 </div>
             </div>
 
