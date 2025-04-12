@@ -1,0 +1,11 @@
+.carousel-caption h5 {
+    color: #FFD700; /* Cambiar el color del título (VJCR, Modeling 3D, Programming) */
+    font-size: 1.5rem; /* Ajustar el tamaño del texto */
+    font-weight: bold; /* Hacerlo más llamativo */
+}
+
+.carousel-caption p {
+    color: #FFFFFF; /* Cambiar el color del subtítulo (Amazing Characters, 3dsMax, C#) */
+    font-size: 1rem; /* Ajustar el tamaño del texto */
+    margin-top: 5px;
+}

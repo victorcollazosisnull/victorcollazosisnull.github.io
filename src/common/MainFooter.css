@@ -1,5 +1,7 @@
-#main-footer{
-    background-color: var(--color-gris-oscuro);
-    color: var(--color-gris-claro);
-    padding: 45px 0;
+#main-footer {
+    background-color: #F0F0F0; /* Fondo gris claro (opcional) */
+    color: #333333; /* Texto en color oscuro */
+    text-align: center; /* Centrar el texto */
+    padding: 10px 0; /* Espaciado interno */
+    font-size: 0.9rem; /* Ajustar el tamaño del texto */
 }
