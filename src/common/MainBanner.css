@@ -5,7 +5,19 @@
 }
 
 .carousel-caption p {
-    color: #FFFFFF; /* Cambiar el color del subtítulo (Amazing Characters, 3dsMax, C#) */
+    color: #fce770; /* Cambiar el color del subtítulo (Amazing Characters, 3dsMax, C#) */
     font-size: 1rem; /* Ajustar el tamaño del texto */
+    margin-top: 5px;
+}
+.carousel-caption h5 {
+    color: #FFD700; /* Cambiar el color del título (VJCR, Modeling 3D, Programming) */
+    font-size: 1.5rem; /* Ajustar el tamaño del texto */
+    font-weight: 900; /* Aumentar el grosor del texto (valores: 100 a 900) */
+}
+
+.carousel-caption p {
+    color: #fce770; /* Cambiar el color del subtítulo (Amazing Characters, 3dsMax, C#) */
+    font-size: 1rem; /* Ajustar el tamaño del texto */
+    font-weight: 700; /* Aumentar el grosor del texto */
     margin-top: 5px;
 }
