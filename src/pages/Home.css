@@ -1,0 +1,28 @@
+.about-me {
+    text-align: center; /* Centrar el contenido */
+    background-color: #3498db; /* Fondo azul */
+    color: #FFFFFF; /* Texto blanco */
+    padding: 20px; /* Espaciado interno */
+    border-radius: 10px; /* Bordes redondeados */
+    margin: 20px auto; /* Centrar horizontalmente */
+    max-width: 600px; /* Ancho máximo */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra */
+}
+
+.about-me h2 {
+    font-size: 2rem; /* Tamaño del título */
+    margin-bottom: 15px;
+}
+
+.about-me p {
+    font-size: 1.2rem; /* Tamaño del texto */
+    margin: 5px 0;
+}
+
+.about-me-image {
+    width: 150px; /* Tamaño de la imagen */
+    height: 150px;
+    border-radius: 50%; /* Imagen circular */
+    margin-bottom: 15px;
+    border: 3px solid #FFFFFF; /* Borde blanco */
+}

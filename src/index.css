@@ -1,6 +1,9 @@
 :root {
+  --primary-color: #3498db; /* Cambiar por el color deseado */
+  --secondary-color: #2ecc71;
+    --background-color: #1676ca;
   --color1: #030AA4;
-  --color2: #07070C;
+  --color2: #1676ca;
   --color3: #E3A410;
   --color4: #65FA05;
   --color5: #00EBF0;
@@ -11,7 +14,9 @@
 }
 
 body {
-  font-family: 'Oxanium', sans-serif;
+  /*font-family: 'Oxanium', sans-serif;*/
+  background-color: var(--background-color);
+  color: var(--text-color);
 }
 
 h1 {

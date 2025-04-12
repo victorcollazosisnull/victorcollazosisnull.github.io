@@ -1,8 +1,35 @@
 #main-header{
-    background-color: var(--color1);
+    background-color: #2033c4;
     color: var(--color-blanco);
 }
 
-#main-header p{
+#main-header h1 {
+    color: var(--color2); /* Cambiar el color del título principal */
+    font-size: 2.5rem; /* Ajustar el tamaño del título */
+    font-weight: bold; /* Hacerlo más llamativo */
+}
+
+#main-header p {
+    color: #FFFFFF; 
+    font-size: 1.2rem; /* Ajustar el tamaño del subtítulo */
     margin-bottom: 0;
+}
+.container {
+    background-color: #70bbe6; 
+}
+
+body {
+    background-color: #70bbe6; /* Cambia a un color gris claro o el que prefieras */
+}
+
+.navbar .nav-link {
+    color: var(--color-blanco); /* Mismo color que "CloudGames" */
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+.navbar .nav-link:hover {
+    color: var(--color3); /* Cambiar el color al pasar el mouse */
 }

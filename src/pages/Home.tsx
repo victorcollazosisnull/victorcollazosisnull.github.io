@@ -1,14 +1,21 @@
+import './Home.css';
 import MainBanner from "../common/MainBanner.tsx";
 
 function Home() {
-
     return (
         <>
-           <MainBanner/>
-
+           <MainBanner />
+           <div>
+               <section className="about-me">
+                   <h2>Sobre mí</h2>
+                   <img src="../assets/images/miFoto.jpg" alt="Mi Foto" className="about-me-image" />
+                   <p>Nombre: Victor Collazos</p>
+                   <p>Edad: 19 años</p>
+                   <p>Carrera: Diseño y Desarrollo de Simuladores y Videojuegos</p>
+               </section>
+           </div>
         </>
     );
 }
 
-
-export default Home
+export default Home;
