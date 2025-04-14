@@ -13,6 +13,9 @@ function MainNav() {
                         <li className="nav-item">
                             <Link className="nav-link" to="/game">Prototype</Link>
                         </li>
+                        <li className="nav-item">
+                            <Link className="nav-link" to="/game2">Prototype2</Link>
+                            </li>
                     </ul>
                 </div>
             </div>
