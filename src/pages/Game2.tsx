@@ -9,8 +9,16 @@ function Game2() {
         codeUrl: "/Game2/cloud.wasm",
     });
 
+    let name: string = "VJCR"
+
+
     function handleSceneRestart() {
         sendMessage("SceneManager", "ReloadScene");
+    }
+
+    function sendName()
+    {
+        sendMessage("SceneManager", "ChangeText", name);
     }
 
     return (
@@ -21,6 +29,7 @@ function Game2() {
                     <Unity unityProvider={unityProvider} className="centered-unity" />
                 <div className="centered-content">
                     <button onClick={handleSceneRestart}>Restart Scene</button>
+                    <button onClick={sendName}>Send Name</button>
                 </div>
                 </div>
                 <div>
