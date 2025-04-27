@@ -11,10 +11,22 @@ function MainNav() {
                             <a className="nav-link" href="/">Menu</a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="/game">Prototype</a>
+                            <a className="nav-link" href="/game">Game 1</a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="/game2">Prototype2</a>
+                            <a className="nav-link" href="/game2">Game 2</a>
+                        </li>
+                        <li className="nav-item">
+                            <a className="nav-link" href="/game3">Game 3</a>
+                        </li>
+                        <li className="nav-item">
+                            <a className="nav-link" href="/game4">Game 4</a>
+                        </li>
+                        <li className="nav-item">
+                            <a className="nav-link" href="/game5">Game 5</a>
+                        </li>
+                        <li className="nav-item">
+                            <a className="nav-link" href="/game6">Game 6</a>
                         </li>
                     </ul>
                 </div>
