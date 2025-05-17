@@ -16,7 +16,7 @@ function Game4() {
         {/* AQUÍ debes poner el nuevo Unity con tamaño fijo */}
         <Unity
           unityProvider={unityProvider}
-          style={{ width: "394px", height: "434px" }}
+          style={{ width: "1280px", height: "720px" }}
         />
       </div>
     </div>
