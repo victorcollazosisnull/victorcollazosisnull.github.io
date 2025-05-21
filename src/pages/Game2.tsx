@@ -2,14 +2,6 @@ import { Unity, useUnityContext } from "react-unity-webgl";
 import { useEffect, useState } from "react";
 
 function Game2() {
-    // ✅ Evitar que Unity capture todo el teclado
-    useEffect(() => {
-        // Esto debe ir antes de que Unity se cargue
-        window.Module = {
-            doNotCaptureKeyboard: true,
-        };
-    }, []);
-
     const { unityProvider, sendMessage, unload } = useUnityContext({
         loaderUrl: "/Game2/Game2.loader.js",
         dataUrl: "/Game2/Game2.data",
