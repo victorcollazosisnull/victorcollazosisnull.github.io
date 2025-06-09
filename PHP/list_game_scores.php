@@ -1,20 +1,17 @@
 <?php
-include 'db_connection.php';
+include "db_connection.php";
 
-$result = $conn->query("CALL ListGameScores()");
 
-if ($result) {
-    $scores = [];
+$sql = "CALL ListGameScores()";  
+$result = $conn->query($sql);
 
-    while ($row = $result->fetch_assoc()) {
-        $scores[] = $row;
-    }
+$data = [];
 
-    echo json_encode($scores);
-    $result->close();
-} else {
-    echo json_encode(["success" => false, "error" => $conn->error]);
+while ($row = $result->fetch_assoc()) {
+    $data[] = $row; 
 }
+
+echo json_encode($data);
 
 $conn->close();
 ?>

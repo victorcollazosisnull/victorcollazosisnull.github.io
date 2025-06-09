@@ -10,6 +10,7 @@ import Game3 from './pages/Game3.tsx';
 import Game4 from './pages/Game4.tsx';
 import Game5 from './pages/Game5.tsx';
 import Game6 from './pages/Game6.tsx';
+import ConsultasGameScores from './components/ConsultasGameScores.tsx';
 
 function App() {
     return (
@@ -25,6 +26,7 @@ function App() {
                     <Route path='/game4' element={<Game4 />} />
                     <Route path='/game5' element={<Game5 />} />
                     <Route path='/game6' element={<Game6 />} />
+                    <Route path='/consultasgamescores' element={<ConsultasGameScores />} /> 
                 </Routes>
                 <MainFooter />
             </BrowserRouter>
