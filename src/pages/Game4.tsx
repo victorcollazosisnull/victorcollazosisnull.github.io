@@ -1,5 +1,5 @@
 import { Unity, useUnityContext } from "react-unity-webgl";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 function Game4() {
     const { unityProvider, sendMessage, unload } = useUnityContext({
@@ -9,30 +9,31 @@ function Game4() {
         codeUrl: "/Game4/Game4.wasm",
     });
 
-    const [name, setName] = useState<string>("");
-
     function handleSceneRestart() {
-    sendMessage("SceneManager", "ReloadScene");
-}
-
-function sendName() {
-    sendMessage("SceneManager", "ChangeText", name);
-}
+        sendMessage("SceneManager", "ReloadScene");
+    }
 
     useEffect(() => {
         const canvas = document.querySelector("canvas");
         if (canvas) {
             canvas.setAttribute("tabindex", "-1");
-            canvas.blur(); // para que no capture el teclado
+            canvas.blur();
         }
 
         return () => {
+            try {
+                sendMessage("MusicManager", "StopAllMusic");
+                console.log("StopAllMusic enviado a Unity");
+            } catch (error) {
+                console.warn("No se pudo enviar StopAllMusic:", error);
+            }
+
             unload().then(() => {
                 const canvas = document.querySelector("canvas");
                 if (canvas) canvas.remove();
             });
         };
-    }, []);
+    }, [sendMessage, unload]);
 
     return (
         <div className="centered-container">
@@ -44,16 +45,7 @@ function sendName() {
                 </div>
 
                 <div className="centered-content">
-                    <input
-                        className="name-input"
-                        type="text"
-                        placeholder="Write your name"
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                    />
-                    <br />
                     <button onClick={handleSceneRestart}>Restart Scene</button>
-                    <button onClick={sendName}>Send Name</button>
                 </div>
             </div>
 

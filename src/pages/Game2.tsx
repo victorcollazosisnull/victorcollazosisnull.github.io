@@ -1,33 +1,39 @@
 import { Unity, useUnityContext } from "react-unity-webgl";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 function Game2() {
-    const { unityProvider, sendMessage, unload } = useUnityContext({
+    const { unityProvider, sendMessage, unload, isLoaded } = useUnityContext({
         loaderUrl: "/Game2/Game2.loader.js",
         dataUrl: "/Game2/Game2.data",
         frameworkUrl: "/Game2/Game2.framework.js",
         codeUrl: "/Game2/Game2.wasm",
     });
 
-    const [name, setName] = useState<string>("");
-
     function handleSceneRestart() {
         sendMessage("SceneManager", "ReloadScene");
-    }
-
-    function sendName() {
-        sendMessage("SceneManager", "ChangeText", name);
     }
 
     useEffect(() => {
         const canvas = document.querySelector("canvas");
         if (canvas) {
             canvas.setAttribute("tabindex", "-1");
-            canvas.blur(); // Quita el foco del canvas
+            canvas.blur();
         }
 
         return () => {
-            console.log("Desmontando Game2, descargando Unity...");
+            console.log("Desmontando Game2, deteniendo música y descargando Unity...");
+
+            if (isLoaded) {
+                try {
+                    sendMessage("AudioManager", "StopMusic");
+                    console.log("Mensaje StopMusic enviado a Unity.");
+                } catch (error) {
+                    console.warn("Error al enviar StopMusic a Unity:", error);
+                }
+            } else {
+                console.warn("Unity no estaba cargado. No se pudo enviar StopMusic.");
+            }
+
             unload().then(() => {
                 const canvas = document.querySelector("canvas");
                 if (canvas) {
@@ -36,7 +42,7 @@ function Game2() {
                 }
             });
         };
-    }, []);
+    }, [isLoaded]);
 
     return (
         <div className="centered-container">
@@ -48,16 +54,7 @@ function Game2() {
                 </div>
 
                 <div className="centered-content">
-                    <input
-                        className="name-input"
-                        type="text"
-                        placeholder="Write your name"
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                    />
-                    <br />
                     <button onClick={handleSceneRestart}>Restart Scene</button>
-                    <button onClick={sendName}>Send Name</button>
                 </div>
             </div>
 
