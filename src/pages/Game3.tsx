@@ -20,21 +20,12 @@ function Game3() {
       console.log("Mensaje recibido de Unity:", msg);
     };
 
-    const canvas = document.querySelector("canvas");
-    if (canvas) {
-      canvas.setAttribute("tabindex", "-1");
-      canvas.blur();
-    }
-
     return () => {
       delete window.SendDataToReact;
 
       try {
         sendMessage("AudioManager", "StopMusic");
-        console.log("StopMusic enviado a Unity");
-      } catch (error) {
-        console.warn("No se pudo enviar StopMusic:", error);
-      }
+      } catch (e) {}
 
       unload().then(() => {
         const canvas = document.querySelector("canvas");
@@ -47,7 +38,15 @@ function Game3() {
     <div className="centered-container">
       <div className="centered-content">
         <h1 className="centered-title">Game 3</h1>
-        <Unity unityProvider={unityProvider} className="responsive-unity" />
+
+        <Unity
+          unityProvider={unityProvider}
+          className="responsive-unity"
+          onUnityCanvas={(canvasElement) => {
+            canvasElement.setAttribute("tabindex", "-1");
+            canvasElement.blur();
+          }}
+        />
       </div>
     </div>
   );

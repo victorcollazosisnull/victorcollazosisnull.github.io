@@ -11,10 +11,7 @@ function MainNav() {
               <Link className="nav-link" to="/">Menu</Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/consultas">Consultas</Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/game">Game 1</Link>
+              <Link className="nav-link" to="/game1">Game 1</Link>
             </li>
             <li className="nav-item">
               <Link className="nav-link" to="/game2">Game 2</Link>
