@@ -21,7 +21,7 @@ function HomeMenu() {
     return (
       <div style={{ padding: "2rem" }}>
         <h2>Bienvenido, {user.email}</h2>
-        <button onClick={() => navigate("/game3")}>Jugar</button>
+        <button onClick={() => navigate("/home")}>Entrar</button>
         <button onClick={handleLogout} style={{ marginLeft: "1rem" }}>
           Cerrar sesión
         </button>
