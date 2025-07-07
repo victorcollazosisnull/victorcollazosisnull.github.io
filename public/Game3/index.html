@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Unity WebGL Player | Game3</title>
+  </head>
+  <body style="text-align: center; padding: 0; border: 0; margin: 0;">
+    <canvas
+      id="unity-canvas"
+      width="960"
+      height="600"
+      tabindex="-1"
+      style="width: 960px; height: 600px; background: #231F20"
+    ></canvas>
+    <script src="Build/Game3.loader.js"></script>
+    <script>
+      if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+        // Mobile device style: fill the whole browser client area with the game canvas:
+        var meta = document.createElement("meta");
+        meta.name = "viewport";
+        meta.content =
+          "width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes";
+        document.getElementsByTagName("head")[0].appendChild(meta);
+
+        var canvas = document.querySelector("#unity-canvas");
+        canvas.style.width = "100%";
+        canvas.style.height = "100%";
+        canvas.style.position = "fixed";
+
+        document.body.style.textAlign = "left";
+      }
+
+      createUnityInstance(document.querySelector("#unity-canvas"), {
+        dataUrl: "Build/Game3.data",
+        frameworkUrl: "Build/Game3.framework.js",
+        codeUrl: "Build/Game3.wasm",
+        streamingAssetsUrl: "StreamingAssets",
+        companyName: "DefaultCompany",
+        productName: "Game3",
+        productVersion: "1.0",
+      }).then((unityInstance) => {
+        // Leer el nombre de usuario desde localStorage
+        const user = JSON.parse(localStorage.getItem("user"));
+        const playerName = user ? user.email : "Invitado";
+
+        // Esperar un poco para que Unity esté listo y enviar el nombre
+        setTimeout(() => {
+          unityInstance.SendMessage("GameSession", "SetPlayerName", playerName);
+        }, 2000);
+      });
+    </script>
+  </body>
+</html>

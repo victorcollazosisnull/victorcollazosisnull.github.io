@@ -16,37 +16,60 @@ function Game3() {
   });
 
   useEffect(() => {
-    window.SendDataToReact = function (msg: string) {
-      console.log("Mensaje recibido de Unity:", msg);
-    };
+  window.SendDataToReact = function (msg: string) {
+    console.log("Mensaje recibido de Unity:", msg);
+  };
 
-    return () => {
-      delete window.SendDataToReact;
+  const user = JSON.parse(localStorage.getItem("user") || "null");
+  const playerName = user ? user.email : "Invitado";
 
-      try {
-        sendMessage("AudioManager", "StopMusic");
-      } catch (e) {}
+  console.log("Jugador a enviar a Unity:", playerName); // ✅ aquí se imprime
 
-      unload().then(() => {
-        const canvas = document.querySelector("canvas");
-        if (canvas) canvas.remove();
-      });
-    };
-  }, [sendMessage, unload]);
+  const timeout = setTimeout(() => {
+  sendMessage("GameSession", "SetPlayerName", playerName);
+}, 2000);
+
+  const focusTimeout = setTimeout(() => {
+    const canvas = document.querySelector("canvas");
+    if (canvas) {
+      canvas.setAttribute("tabindex", "-1");
+      canvas.blur();
+    }
+  }, 500);
+
+  return () => {
+    clearTimeout(timeout);
+    clearTimeout(focusTimeout);
+    delete window.SendDataToReact;
+
+    unload().then(() => {
+      const canvas = document.querySelector("canvas");
+      if (canvas) canvas.remove();
+    });
+  };
+}, [sendMessage, unload]);
+
+  // Aquí agregas la función que llamará al método Unity
+  const handleResetRanking = () => {
+    // El primer parámetro es el nombre del GameObject en Unity
+    // El segundo el nombre del método público sin parámetros
+    sendMessage("RankingResetter ", "ResetRanking");
+  };
 
   return (
     <div className="centered-container">
       <div className="centered-content">
         <h1 className="centered-title">Game 3</h1>
 
-        <Unity
-          unityProvider={unityProvider}
-          className="responsive-unity"
-          onUnityCanvas={(canvasElement) => {
-            canvasElement.setAttribute("tabindex", "-1");
-            canvasElement.blur();
-          }}
-        />
+        <Unity unityProvider={unityProvider} className="responsive-unity" />
+
+        {/* Botón para resetear ranking */}
+        <button
+          onClick={handleResetRanking}
+          style={{ marginTop: "1rem", padding: "0.5rem 1rem" }}
+        >
+          Resetear Ranking
+        </button>
       </div>
     </div>
   );
