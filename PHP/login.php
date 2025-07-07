@@ -1,14 +1,28 @@
 <?php
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: POST, OPTIONS");
+header("Access-Control-Allow-Headers: Content-Type");
+
+if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+    http_response_code(200);
+    exit();
+}
+
 require 'conexion.php';
 
 $data = json_decode(file_get_contents("php://input"));
-$email = trim(strtolower($data->email));  
+
+if (!$data || !isset($data->email) || !isset($data->password)) {
+    echo json_encode(["status" => "error", "message" => "Datos incompletos"]);
+    exit();
+}
+
+$email = trim(strtolower($data->email));
 $password = $data->password;
 
-$stmt = $conn->prepare("CALL sp_loginUser(?)");
+$stmt = $conn->prepare("SELECT password FROM users WHERE email = ?");
 $stmt->bind_param("s", $email);
 $stmt->execute();
-
 $result = $stmt->get_result();
 
 if ($row = $result->fetch_assoc()) {
@@ -23,4 +37,3 @@ if ($row = $result->fetch_assoc()) {
 
 $stmt->close();
 $conn->close();
-?>
