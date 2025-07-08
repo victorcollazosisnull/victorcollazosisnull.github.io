@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { Unity, useUnityContext } from "react-unity-webgl";
 
 declare global {
